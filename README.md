@@ -1,6 +1,12 @@
 # Tennis-MDPs
-Modeling tennis as a MDP and exploring controllable noise to the underlying transition matrices to quantify the effect of player inaccuracies to their chances of winning the point.
+Modeling tennis as a MDP and adding controllable noise to the underlying transition matrices to quantify the effect of player inaccuracies.
 
-Presented at the Sport Innovation Summit hosted by Own the Podium and Canadian Sport Institute in October 2020. 
+### Paper:
 
-Upcoming presentation at the Canadian Operations Research Society Annual Conference in June 2021
+C. Fernandes, S. Kovalchik, D. S. Fearing, T. C. Y. Chan, “Using Markov decision processes to evaluate style of play in professional tennis,” In Preparation for *European Journal of Operational Research*, 2020.
+
+### Conference Presentations
+
+•	Canadian Operational Research Society Conference, Virtual 2021 (Oral)
+
+•	Sport Innovation Summit, Virtual 2020 (Poster)
