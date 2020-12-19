@@ -1,5 +1,5 @@
 # Tennis-MDPs
-Modeling tennis as a MDP and adding controllable noise to the underlying transition matrices to quantify the effect of player inaccuracies.
+Using 3-D ball and player tracking data to model tennis as a MDP and adding controllable noise to the underlying transition matrices to quantify the effect of player inaccuracies.
 
 ### Paper:
 
