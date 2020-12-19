@@ -12,3 +12,6 @@ C. Fernandes, S. Kovalchik, D. S. Fearing, T. C. Y. Chan, “Using Markov decisi
 •	Sport Innovation Summit, Virtual 2020 (Poster)
 
 ![Alt text](relative/path/to/SPIN Poster - Tennis Value Functions.jpg?raw=true "Title")
+
+![picture](img/SPIN_2020_Poster.jpg)
+
