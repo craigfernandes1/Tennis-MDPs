@@ -13,5 +13,5 @@ C. Fernandes, S. Kovalchik, D. S. Fearing, T. C. Y. Chan, “Using Markov decisi
 
 ![Alt text](relative/path/to/SPIN Poster - Tennis Value Functions.jpg?raw=true "Title")
 
-![picture](img/SPIN_2020_Poster.jpg)
+![picture](SPIN_2020_Poster.jpg)
 
