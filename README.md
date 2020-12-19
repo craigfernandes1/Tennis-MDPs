@@ -10,3 +10,5 @@ C. Fernandes, S. Kovalchik, D. S. Fearing, T. C. Y. Chan, “Using Markov decisi
 •	Canadian Operational Research Society Conference, Virtual 2021 (Oral)
 
 •	Sport Innovation Summit, Virtual 2020 (Poster)
+
+![Alt text](relative/path/to/SPIN Poster - Tennis Value Functions.jpg?raw=true "Title")
