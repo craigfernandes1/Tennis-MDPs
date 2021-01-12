@@ -155,6 +155,13 @@ def add_landing_region_to_df(df,more_actions=False):
 
     return pd.concat([df_deuceserve, df_adserve, df_rally], ignore_index=True)
 
+
+def determine_weights_for_epsilon_distributions(df,more_actions=False):
+
+    df['region'] = landing_region_by_type(df, more_actions, 'rally')
+    return df
+
+
 def landing_region_by_type(df, more_actions, type):
 
 
@@ -174,8 +181,8 @@ def landing_region_by_type(df, more_actions, type):
             region_dict = {0: 'Error', 1: 'rally_short_ad', 2: 'rally_short_middle', 3: 'rally_short_deuce',
                            4: 'rally_deep_ad', 5: 'rally_deep_middle', 6: 'rally_deep_deuce'}
         else:
-            xBin = [-16, 0, 2.1336, 4.2672, 6.4, 8.5328, 10.8872, 11.8872, 16]
-            yBin = [-7.5, -823 / 200, -623 / 200, 0, 623 / 200, 823 / 200, 7.5]
+            xBin = [-50, 0, 2.1336, 4.2672, 6.4, 8.5328, 10.8872, 11.8872, 50]
+            yBin = [-50, -823 / 200, -623 / 200, 0, 623 / 200, 823 / 200, 50]
 
             df_new = df.assign(
                 xCut=(pd.cut(df.x02, xBin, labels=False, retbins=True, right=False))[0],
@@ -213,6 +220,16 @@ def landing_region_by_type(df, more_actions, type):
 
     return region
 
+def calculate_weights(df):
+    proportions = df.groupby('region').count().iloc[:, 0]
+    total_rally = proportions['OBDrop':'deuceShortSide'].sum()
+    weights_rally = proportions['OBDrop':'deuceShortSide'] / total_rally
+    total_deuce_serve = proportions['serve_deuce_corner':'serve_deuce_middle'].sum()
+    weights_deuce_serve = proportions['serve_deuce_corner':'serve_deuce_middle'] / total_deuce_serve
+    total_ad_serve = proportions['serve_ad_corner':'serve_ad_middle'].sum()
+    weights_ad_serve = proportions['serve_ad_corner':'serve_ad_middle'] / total_ad_serve
+
+    return proportions, weights_rally, weights_deuce_serve, weights_ad_serve
 
 def actionProbabilityVector(df, distribution_region_dict, region_labels, weights_rally, weights_deuce_serve, weights_ad_serve):
     df_rally, df_serve = [x for _, x in df.groupby(df['Type'] == 'serve')]
@@ -224,7 +241,7 @@ def actionProbabilityVector(df, distribution_region_dict, region_labels, weights
     df_adserve = specificActionProbabilityVector(df_adserve, distribution_region_dict, region_labels[25:27], weights_ad_serve)
     df_rally = specificActionProbabilityVector(df_rally, distribution_region_dict, region_labels[0:25], weights_rally)
 
-    df_full = pd.concat([df_deuceserve, df_adserve, df_rally], axis=0)
+    df_full = pd.concat([df_rally, df_adserve, df_deuceserve], axis=0)
     df_full.replace(np.nan, 0, inplace=True)
 
     return df_full
